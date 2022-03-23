@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "rspec_structure_matcher/version"
+require 'active_support/core_ext/hash'
 
 require_relative "structure"
 
@@ -42,6 +43,8 @@ RSpec::Matchers.define :match_structure do |structure|
       struc.matches?(json) { |j, s| explore_structure(j, s) }
       # example: 1 ~= one_of(Integer, String)
     elsif struc.is_a? Structure::Type::Single
+      struc.matches?(json) { |j, s| explore_structure(j, s) }
+    elsif struc.is_a? Structure::Type::ArrayWithStruct
       struc.matches?(json) { |j, s| explore_structure(j, s) }
       # example: {a: b, c: d} ~= {a: Integer, b: String}
     elsif json.is_a?(Hash)

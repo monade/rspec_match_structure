@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "An RSpec matcher to match json:api structures and lists."
   spec.homepage      = "https://github.com/monade/rspec_structure_matcher"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.4.0"
+  spec.required_ruby_version = ">= 2.5"
 
 
   spec.metadata["homepage_uri"] = spec.homepage
@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "activesupport"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
