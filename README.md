@@ -1,5 +1,7 @@
 # RSpec Structure Matcher
 
+[![Ruby Gem](https://github.com/monade/rspec_structure_matcher/actions/workflows/gem-push.yml/badge.svg)](https://github.com/monade/rspec_structure_matcher/actions/workflows/gem-push.yml)
+
 Raise your expectations! RSpec structure matcher is a gem that allows to test the structure of your string, hashes and lists.
 
 
