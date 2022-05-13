@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.3.0] - 2022-05-13
+
+- Added more test cases
+- Added readme
 
 ## [0.2.0] - 2022-03-23
 
