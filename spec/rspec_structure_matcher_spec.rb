@@ -17,6 +17,16 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
+  it "matches generic object with literal attributes" do
+    expect do
+      expect({ id: "33", type: "ciaone" })
+        .to match_structure({
+                              id: String,
+                              type: 'ciaone'
+                            })
+    end.not_to raise_error
+  end
+
   it "does not match string against number" do
     expect do
       expect(
@@ -229,4 +239,134 @@ RSpec.describe RspecStructureMatcher do
              )
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
+
+  it 'matches a list of generic types' do
+    expect do
+      expect([
+               {
+                 id: 123,
+                 type: "aType"
+               },
+               {
+                 id: 555,
+                 type: "anotherType"
+               }
+             ]).to match_structure(
+               a_list_of(Hash)
+             )
+    end.not_to raise_error
+  end
+
+  it 'matches a raw list' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+              [1, 2, 3]
+             )
+    end.not_to raise_error
+  end
+  it 'does not match a raw list' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+              [1, 2]
+             )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
+  it 'does not match a list when size is not matching' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(Integer).with(2).elements
+             )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+  it 'does not match a list when size is not matching at least' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(Integer).with(10).elements_at_least
+             )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
+  it 'does match a list when size is matching at least' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(Integer).with(1).elements_at_least
+                   )
+    end.not_to raise_error
+  end
+
+
+  it 'does match a list when size is matching at most' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(Integer).with(10).elements_at_most
+                   )
+    end.not_to raise_error
+  end
+
+  it 'does not match a list when size is not matching at most' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(Integer).with(1).elements_at_most
+                   )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
+  it 'does match a string against a regexp' do
+    expect do
+      expect("abc").to match_structure(
+        /abc/
+      )
+    end.not_to raise_error
+  end
+
+
+  it 'does not match a string against a not maching regexp' do
+    expect do
+      expect("abc").to match_structure(
+                         /bcd/
+                       )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
+  it 'match a list one of' do
+    expect do
+      expect([
+               1, 2, 3
+             ]).to match_structure(
+                     a_list_of(one_of(Integer, String))
+             )
+    end.not_to raise_error
+  end
+
+  it 'matches one of' do
+    expect do
+      expect(1).to match_structure(
+                     one_of(Integer, String)
+             )
+    end.not_to raise_error
+  end
+
+  it 'does not match one of' do
+    expect do
+      expect(nil).to match_structure(
+                     one_of(Integer, String)
+             )
+    end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
 end
