@@ -1,8 +1,7 @@
-# RspecStructureMatcher
+# RSpec Structure Matcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rspec_structure_matcher`. To experiment with that code, run `bin/console` for an interactive prompt.
+Raise your expectations! RSpec structure matcher is a gem that allows to test the structure of your string, hashes and lists.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +21,58 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`match_strucure` can match various types of data and structures against schemas. A dead simple example of what it can do is:
+
+```ruby
+expect(["a", "b", "c"]).to match_structure(a_list_of(String).with(2).elements_at_least)
+```
+
+Another example:
+
+```ruby
+expect([
+         {
+           id: '1',
+           type: 'users'
+         },
+         {
+           id: '2',
+           type: 'users'
+         },
+         {
+           id: '1',
+           type: 'posts'
+         }
+       ]).to match_structure(a_list_with({ type: 'users' }).exactly(2).times)
+```
+
+It can also match string agains regular expressions:
+
+```ruby
+ expect("abc").to match_structure( /abc/ )
+```
+
+This is especially useful when you want to test a JSON:API response:
+
+```ruby
+
+    expect(response.body).to match_structure(
+                               {
+                                 data: {
+                                     id: String,
+                                     type: 'someType',
+                                     attributes: {
+                                       anAttribute: String
+                                     }
+                                },
+                                 included: [
+                                   a_list_with({ type: 'relatedType' }).exactly(1).times
+                                 ]
+                               }
+                             )
+```
+
+To see all the various features please refer to the [spec file](https://github.com/monade/rspec_structure_matcher/blob/master/spec/rspec_structure_matcher_spec.rb).
 
 ## Development
 
@@ -32,7 +82,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rspec_structure_matcher.
+Bug reports and pull requests are welcome on GitHub at https://github.com/monade/rspec_structure_matcher.
 
 ## License
 

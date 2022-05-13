@@ -7,7 +7,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it "matches generic object" do
+  it "matches an object agains a schema with classes" do
     expect do
       expect({ id: "33", type: "ciaone" })
         .to match_structure({
@@ -17,12 +17,12 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it "matches generic object with literal attributes" do
+  it "matches an object agains a schema with classes and literals" do
     expect do
-      expect({ id: "33", type: "ciaone" })
+      expect({ id: "33", type: "hello" })
         .to match_structure({
                               id: String,
-                              type: 'ciaone'
+                              type: "hello"
                             })
     end.not_to raise_error
   end
@@ -42,7 +42,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it "matches a list of structures" do
+  it "matches a list of schemas defined with classes" do
     expect do
       expect([
                {
@@ -82,7 +82,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it "matches a list size" do
+  it "matches a list against a schema with a fixed count" do
     expect do
       expect([
                {
@@ -102,7 +102,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it "matches a list with at least one struct as defined" do
+  it "matches a list with at least one schema as defined" do
     expect do
       expect([
                {
@@ -171,7 +171,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it "matches a list containing at least one struct as defined specifying a count" do
+  it "matches a list containing at least one struct as defined specifying an exact count" do
     expect do
       expect([
                {
@@ -240,7 +240,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it 'matches a list of generic types' do
+  it "matches a list of generic types" do
     expect do
       expect([
                {
@@ -257,7 +257,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it 'matches a raw list' do
+  it "matches list literals" do
     expect do
       expect([
                1, 2, 3
@@ -266,7 +266,7 @@ RSpec.describe RspecStructureMatcher do
              )
     end.not_to raise_error
   end
-  it 'does not match a raw list' do
+  it "does not match list literals if not identical" do
     expect do
       expect([
                1, 2, 3
@@ -276,7 +276,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it 'does not match a list when size is not matching' do
+  it "does not match a list when size is not matching" do
     expect do
       expect([
                1, 2, 3
@@ -285,7 +285,7 @@ RSpec.describe RspecStructureMatcher do
              )
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
-  it 'does not match a list when size is not matching at least' do
+  it "does not match a list when size is not satisfying a minimum condition" do
     expect do
       expect([
                1, 2, 3
@@ -295,7 +295,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it 'does match a list when size is matching at least' do
+  it "matches a list when size is satisfying a minimum condition" do
     expect do
       expect([
                1, 2, 3
@@ -306,7 +306,7 @@ RSpec.describe RspecStructureMatcher do
   end
 
 
-  it 'does match a list when size is matching at most' do
+  it "does match a list when size is satisfying a maximum condition" do
     expect do
       expect([
                1, 2, 3
@@ -316,7 +316,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it 'does not match a list when size is not matching at most' do
+  it "does not match a list when size is exceeding a maximum condition" do
     expect do
       expect([
                1, 2, 3
@@ -326,7 +326,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it 'does match a string against a regexp' do
+  it "does match a string against a regexp" do
     expect do
       expect("abc").to match_structure(
         /abc/
@@ -335,7 +335,7 @@ RSpec.describe RspecStructureMatcher do
   end
 
 
-  it 'does not match a string against a not maching regexp' do
+  it "does not match a string against a not matching regexp" do
     expect do
       expect("abc").to match_structure(
                          /bcd/
@@ -343,7 +343,7 @@ RSpec.describe RspecStructureMatcher do
     end.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 
-  it 'match a list one of' do
+  it "match a list against a schema defined as a list of one of some classes" do
     expect do
       expect([
                1, 2, 3
@@ -353,7 +353,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it 'matches one of' do
+  it "matches a literal agains many possibile classes" do
     expect do
       expect(1).to match_structure(
                      one_of(Integer, String)
@@ -361,7 +361,7 @@ RSpec.describe RspecStructureMatcher do
     end.not_to raise_error
   end
 
-  it 'does not match one of' do
+  it "does not match one of" do
     expect do
       expect(nil).to match_structure(
                      one_of(Integer, String)
