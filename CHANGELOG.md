@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.3.1] - 2022-05-16
+
+- Renamed gem
+
 ## [0.3.0] - 2022-05-13
 
 - Added more test cases
