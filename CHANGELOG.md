@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [0.3.2] - 2022-05-16
+
+- Bumped version
+- Fixed workflow
+
 ## [0.3.1] - 2022-05-16
 
 - Renamed gem

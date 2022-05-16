@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rspec_match_structure (0.3.0)
+    rspec_match_structure (0.3.2)
       activesupport
 
 GEM
