@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "rspec_structure_matcher/version"
+require_relative "rspec_match_structure/version"
 require 'active_support/core_ext/hash'
 
 require_relative "structure"

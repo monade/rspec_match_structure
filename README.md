@@ -1,8 +1,8 @@
-# RSpec Structure Matcher
+# RSpec match_structure
 
-[![Ruby Gem](https://github.com/monade/rspec_structure_matcher/actions/workflows/gem-push.yml/badge.svg)](https://github.com/monade/rspec_structure_matcher/actions/workflows/gem-push.yml)
+[![Ruby Gem](https://github.com/monade/rspec_match_structure/actions/workflows/gem-push.yml/badge.svg)](https://github.com/monade/rspec_match_structure/actions/workflows/gem-push.yml)
 
-Raise your expectations! RSpec structure matcher is a gem that allows to test the structure of your string, hashes and lists.
+Raise your expectations! RSpec match_structure is a gem that allows to test the structure of your string, hashes and lists.
 
 
 ## Installation
@@ -10,7 +10,7 @@ Raise your expectations! RSpec structure matcher is a gem that allows to test th
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rspec_structure_matcher'
+gem 'rspec_match_structure'
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rspec_structure_matcher
+    $ gem install rspec_match_structure
 
 ## Usage
 
@@ -74,7 +74,7 @@ This is especially useful when you want to test a JSON:API response:
                              )
 ```
 
-To see all the various features please refer to the [spec file](https://github.com/monade/rspec_structure_matcher/blob/master/spec/rspec_structure_matcher_spec.rb).
+To see all the various features please refer to the [spec file](https://github.com/monade/rspec_match_structure/blob/master/spec/rspec_match_structure_spec.rb).
 
 ## Development
 
@@ -84,7 +84,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/monade/rspec_structure_matcher.
+Bug reports and pull requests are welcome on GitHub at https://github.com/monade/rspec_match_structure.
 
 ## License
 

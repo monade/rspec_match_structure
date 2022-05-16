@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module RspecStructureMatcher
+module RspecMatchStructure
   VERSION = "0.3.0"
 end

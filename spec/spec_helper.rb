@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rspec_structure_matcher"
+require "rspec_match_structure"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
