@@ -89,3 +89,12 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/monade
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+About Monade
+----------------
+
+![monade](https://monade.io/wp-content/uploads/2021/06/monadelogo.png)
+
+rspec_match_structure is maintained by [mònade srl](https://monade.io/en/home-en/).
+
+We <3 open source software. [Contact us](https://monade.io/en/contact-us/) for your next project!
