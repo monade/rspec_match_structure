@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RspecStructureMatcher do
+RSpec.describe RspecMatchStructure do
   it "matches the empty object" do
     expect do
       expect({}).to match_structure({})
