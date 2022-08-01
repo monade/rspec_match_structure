@@ -1,5 +1,6 @@
 # RSpec match_structure
 
+[![Tests](https://github.com/monade/rspec_match_structure/actions/workflows/test.yml/badge.svg)](https://github.com/monade/rspec_match_structure/actions/workflows/test.yml)
 [![Ruby Gem](https://github.com/monade/rspec_match_structure/actions/workflows/gem-push.yml/badge.svg)](https://github.com/monade/rspec_match_structure/actions/workflows/gem-push.yml)
 
 Raise your expectations! RSpec match_structure is a gem that allows to test the structure of your string, hashes and lists.
